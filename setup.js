@@ -74,6 +74,7 @@ const logoSizeInput = document.getElementById('logoSize');
 const logoSizeValue = document.getElementById('logoSizeValue');
 const logoPreview = document.getElementById('logoPreview');
 const previewLogo = document.getElementById('previewLogo');
+const showTextCheckbox = document.getElementById('showText');
 
 // Initialize
 initWebSocket();
@@ -85,6 +86,7 @@ updatePreview();
 saveApiKeyBtn.addEventListener('click', saveApiKey);
 generateImageBtn.addEventListener('click', generateImage);
 customFontInput.addEventListener('change', handleCustomFont);
+showTextCheckbox.addEventListener('change', updatePreview);
 textContentInput.addEventListener('input', updatePreview);
 fontFamilySelect.addEventListener('change', updatePreview);
 fontSizeInput.addEventListener('input', () => {
@@ -261,6 +263,7 @@ function handleLogoUpload(event) {
 }
 
 function updatePreview() {
+    const showText = showTextCheckbox.checked;
     const text = textContentInput.value || 'Sample Text';
     const fontFamily = fontFamilySelect.value;
     const fontSize = fontSizeInput.value + 'px';
@@ -268,6 +271,9 @@ function updatePreview() {
     const useStroke = textStrokeCheckbox.checked;
     const strokeColor = strokeColorInput.value;
     const strokeWidth = strokeWidthInput.value + 'px';
+
+    // Show or hide text
+    previewText.style.display = showText ? 'block' : 'none';
 
     previewText.textContent = text;
     previewText.style.fontFamily = fontFamily;
@@ -299,6 +305,7 @@ function updatePreview() {
 function sendToOutput() {
     const config = {
         text: textContentInput.value || 'Sample Text',
+        showText: showTextCheckbox.checked,
         fontFamily: fontFamilySelect.value,
         fontSize: fontSizeInput.value,
         color: textColorInput.value,
@@ -362,6 +369,7 @@ function loadSavedSettings() {
         try {
             const config = JSON.parse(savedConfig);
             textContentInput.value = config.text || '';
+            showTextCheckbox.checked = config.showText !== undefined ? config.showText : true;
             fontSizeInput.value = config.fontSize || 48;
             fontSizeValue.textContent = config.fontSize || 48;
             textColorInput.value = config.color || '#ffffff';

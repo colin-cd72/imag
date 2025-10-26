@@ -284,6 +284,11 @@ function loadConfiguration() {
 function applyConfiguration(config) {
     if (!config) return;
 
+    // Show or hide text
+    if (config.showText !== undefined) {
+        textElement.style.display = config.showText ? 'block' : 'none';
+    }
+
     // Apply text
     if (config.text) {
         outputText.textContent = config.text;
