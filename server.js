@@ -9,7 +9,7 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 // Configuration
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 const ALLOW_CORS = process.env.ALLOW_CORS !== 'false';
 
 // Middleware

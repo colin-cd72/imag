@@ -28,8 +28,8 @@ git push -u origin main
 4. Fill in:
    - **Domain Name**: imag.4tmrw.net
    - **Node.js Version**: 18.x or higher
-   - **App Port**: 3000
-   - **Site User**: Choose or create one
+   - **App Port**: 3030
+   - **Site User**: imag
 
 ### 3. Deploy via SSH
 
@@ -42,7 +42,7 @@ ssh your-username@your-server-ip
 Navigate to your site directory:
 
 ```bash
-cd /home/your-site-user/htdocs/imag.4tmrw.net
+cd /home/imag/htdocs/imag.4tmrw.net
 ```
 
 Clone your repository:
@@ -175,7 +175,7 @@ pm2 logs image-generator
 ### Update Your Application
 
 ```bash
-cd /home/your-site-user/htdocs/imag.4tmrw.net
+cd /home/imag/htdocs/imag.4tmrw.net
 git pull
 npm install
 pm2 restart image-generator
