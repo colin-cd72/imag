@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Generator - Setup</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="config.js"></script>
+</head>
+<body class="setup-page">
+    <div class="container">
+        <h1>Image Generator Setup</h1>
+
+        <!-- API Key Section -->
+        <div class="section">
+            <h2>OpenAI API Configuration</h2>
+            <div class="form-group">
+                <label for="apiKey">OpenAI API Key:</label>
+                <input type="password" id="apiKey" placeholder="sk-...">
+                <button id="saveApiKey" class="btn btn-secondary">Save Key</button>
+            </div>
+        </div>
+
+        <!-- Image Generation Section -->
+        <div class="section">
+            <h2>Generate Background Image</h2>
+            <div class="form-group">
+                <label for="imagePrompt">Image Description:</label>
+                <textarea id="imagePrompt" rows="3" placeholder="Describe the image you want to generate..."></textarea>
+                <button id="generateImage" class="btn btn-primary">Generate Image with ChatGPT</button>
+            </div>
+            <div id="imagePreview" class="image-preview">
+                <p>Generated image will appear here</p>
+            </div>
+            <div id="generationStatus" class="status-message"></div>
+        </div>
+
+        <!-- Text Configuration Section -->
+        <div class="section">
+            <h2>Text Configuration</h2>
+
+            <div class="form-group">
+                <label for="textContent">Text:</label>
+                <input type="text" id="textContent" placeholder="Enter your text here" value="Sample Text">
+            </div>
+
+            <div class="form-group">
+                <label for="fontFamily">Font Family:</label>
+                <select id="fontFamily">
+                    <option value="Arial, sans-serif">Arial</option>
+                    <option value="'Times New Roman', serif">Times New Roman</option>
+                    <option value="'Courier New', monospace">Courier New</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="Verdana, sans-serif">Verdana</option>
+                    <option value="Impact, sans-serif">Impact</option>
+                    <option value="'Comic Sans MS', cursive">Comic Sans MS</option>
+                    <option value="'Trebuchet MS', sans-serif">Trebuchet MS</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="customFont">Upload Custom Font:</label>
+                <input type="file" id="customFont" accept=".ttf,.otf,.woff,.woff2">
+                <span id="customFontName" class="file-name"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="fontSize">Font Size: <span id="fontSizeValue">48</span>px</label>
+                <input type="range" id="fontSize" min="10" max="200" value="48">
+            </div>
+
+            <div class="form-group">
+                <label for="textColor">Text Color:</label>
+                <input type="color" id="textColor" value="#ffffff">
+            </div>
+
+            <div class="form-group">
+                <label for="textStroke">Text Stroke:</label>
+                <input type="checkbox" id="textStroke">
+                <label for="strokeColor">Stroke Color:</label>
+                <input type="color" id="strokeColor" value="#000000">
+                <label for="strokeWidth">Width:</label>
+                <input type="range" id="strokeWidth" min="0" max="10" value="2" style="width: 100px;">
+                <span id="strokeWidthValue">2</span>px
+            </div>
+        </div>
+
+        <!-- Logo Configuration Section -->
+        <div class="section">
+            <h2>Logo Configuration</h2>
+
+            <div class="form-group">
+                <label for="logoUpload">Upload Logo:</label>
+                <input type="file" id="logoUpload" accept="image/*">
+                <span id="logoFileName" class="file-name"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="logoSize">Logo Size: <span id="logoSizeValue">100</span>px</label>
+                <input type="range" id="logoSize" min="20" max="500" value="100">
+            </div>
+
+            <div id="logoPreview" class="logo-preview-box">
+                <p>Uploaded logo will appear here</p>
+            </div>
+        </div>
+
+        <!-- Preview Section -->
+        <div class="section">
+            <h2>Preview</h2>
+            <div id="preview" class="preview-box">
+                <img id="previewLogo" class="preview-logo" style="display: none;">
+                <span id="previewText">Sample Text</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="section actions">
+            <button id="updateOutput" class="btn btn-success">Update Output Page</button>
+            <button id="openOutput" class="btn btn-primary">Open Output Page</button>
+        </div>
+    </div>
+
+    <script src="setup.js"></script>
+</body>
+</html>
